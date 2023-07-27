@@ -8,12 +8,14 @@ import { useRouter } from 'next/navigation';
 import { Product } from '@/types';
 import IconButton from './icon-button';
 import Currency from './currency';
+import usePreviewModal from '@/hooks/use-preview-model';
 
 type Props = {
   data: Product;
 };
 
 export default function ProductCard({ data }: Props) {
+  const previewModal = usePreviewModal();
   const router = useRouter();
 
   const handleClick = () => {
@@ -22,6 +24,7 @@ export default function ProductCard({ data }: Props) {
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
+    previewModal.onOpen(data);
   };
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
