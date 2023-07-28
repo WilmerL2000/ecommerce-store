@@ -9,6 +9,7 @@ import { Product } from '@/types';
 import IconButton from './icon-button';
 import Currency from './currency';
 import usePreviewModal from '@/hooks/use-preview-model';
+import useCart from '@/hooks/use-cart';
 
 type Props = {
   data: Product;
@@ -16,6 +17,7 @@ type Props = {
 
 export default function ProductCard({ data }: Props) {
   const previewModal = usePreviewModal();
+  const cart = useCart();
   const router = useRouter();
 
   const handleClick = () => {
@@ -29,6 +31,7 @@ export default function ProductCard({ data }: Props) {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
+    cart.addItem(data);
   };
 
   return (
