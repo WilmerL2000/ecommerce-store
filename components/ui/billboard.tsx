@@ -1,7 +1,7 @@
-import { Billboard } from '@/types';
+import { Billboard as BillboardInfo } from '@/types';
 
 type Props = {
-  data: Billboard;
+  data: BillboardInfo;
 };
 
 export default function Billboard({ data }: Props) {
